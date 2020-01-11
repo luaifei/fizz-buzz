@@ -1,6 +1,8 @@
 package com.thoughtworks;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -85,7 +87,7 @@ public class FuzzBuzzTest {
     @Test
     void should_return_FuzzBuzz_when_report_given_number_is_divisible_by_5_and_7() {
         FuzzBuzz fuzzBuzz = new FuzzBuzz();
-        assertEquals("BuzzWhizz", fuzzBuzz.report(35));
+        assertEquals("BuzzWhizz", fuzzBuzz.report(70));
     }
 
     @Test
@@ -93,4 +95,12 @@ public class FuzzBuzzTest {
         FuzzBuzz fuzzBuzz = new FuzzBuzz();
         assertEquals("FizzBuzzWhizz", fuzzBuzz.report(210));
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {13, 30, 63, 3, 30, 63, 2310})
+    void should_return_Fizz_when_report_given_number_contains_3(int num) {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("Fizz", fuzzBuzz.report(num));
+    }
+
 }

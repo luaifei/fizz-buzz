@@ -2,6 +2,10 @@ package com.thoughtworks;
 
 public class FuzzBuzz {
     public String report(int num) {
+        if (String.valueOf(num).contains("3")) {
+            return "Fizz";
+        }
+
         String result = reportWithAllDivideRuleEffective(num);
         if (!result.isEmpty()) {
             return result;
