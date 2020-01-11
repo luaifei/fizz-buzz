@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * 3. 学生报数时，如果所报数字同时是两个特殊数的倍数情况下，也要特殊处理，比如3和5的倍数，那么不能说该数字，而是要说FizzBuzz, 以此类推。如果同时是三个特殊数的倍数，那么要说FizzBuzzWhizz。
  *      - 当所报的数字是3和5的倍数时，并且不包含3，并且不包含5，并且不包含7，则报FizzBuzz (60)
  *      - 当所报的数字是3和7的倍数时，并且不包含5，则报FizzWhizz (21)
- *      - 当所报的数字是5和7的倍数时，并且不包含7，则报BuzzWhizz (35)
  *      - 当所报的数字是3和5和7的倍数时，并且不包含5，并且不包含7，则报FizzBuzzWhizz (210)
  *
  * 4. 学生报数时，如果所报数字包含了3，那么也不能说该数字，而是要说相应的单词，比如要报13的同学应该说Fizz。
@@ -85,12 +84,6 @@ public class FuzzBuzzTest {
     }
 
     @Test
-    void should_return_FuzzBuzz_when_report_given_number_is_divisible_by_5_and_7() {
-        FuzzBuzz fuzzBuzz = new FuzzBuzz();
-        assertEquals("BuzzWhizz", fuzzBuzz.report(70));
-    }
-
-    @Test
     void should_return_FuzzBuzz_when_report_given_number_is_divisible_by_3_and_5_and_7() {
         FuzzBuzz fuzzBuzz = new FuzzBuzz();
         assertEquals("FizzBuzzWhizz", fuzzBuzz.report(210));
@@ -103,19 +96,75 @@ public class FuzzBuzzTest {
         assertEquals("Fizz", fuzzBuzz.report(num));
     }
 
-    /**
-     *  * 6. 如果数字中包含了5，那么忽略规则4和规则5，并且忽略被3整除的判定，比如要报35的同学不报Fizz，报BuzzWhizz。
-     *  *      - 当所报的数字包含5时，并且不包含7，并且不包含3，并且仅是3的倍数，则报数字 (51)
-     *  *      - 当所报的数字包含5时，并且不包含7，并且不包含3，并且是3，5的倍数，则报Buzz (15)
-     *  *      - 当所报的数字包含5时，并且不包含7，并且不包含3，并且是3，5，7的倍数，则报BuzzWhizz (105)
-     *  *      - 当所报的数字包含5时，并且不包含7，并且包含3时，并且不是3，5，7的倍数，则报数字 (53)
-     *  *      - 当所报的数字包含5时，并且不包含7，并且包含3时，并且仅是3的倍数，则报数字 (153)
-     *  *      - 当所报的数字包含5时，并且不包含7，并且包含3时，并且是3，5的倍数，则报Buzz (135)
-     *  *      - 当所报的数字包含5时，并且不包含7，并且包含3时，并且是3，5，7的倍数，则报BuzzWhizz (315)
-     */
     @Test
     void should_return_number_when_report_given_number_contains_5_and_is_divisible_by_3() {
         FuzzBuzz fuzzBuzz = new FuzzBuzz();
         assertEquals("51", fuzzBuzz.report(51));
+    }
+
+    @Test
+    void should_return_number_when_report_given_number_contains_5_and_is_divisible_by_3_and_5() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("Buzz", fuzzBuzz.report(15));
+    }
+
+    @Test
+    void should_return_number_when_report_given_number_contains_5_and_is_divisible_by_3_and_5_and_7() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("BuzzWhizz", fuzzBuzz.report(105));
+    }
+
+    @Test
+    void should_return_number_when_report_given_number_contains_5_and_3_and_is_not_divisible_by_3_or_5_or_7() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("53", fuzzBuzz.report(53));
+    }
+
+    @Test
+    void should_return_number_when_report_given_number_contains_5_and_3_and_is_divisible_by_3() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("153", fuzzBuzz.report(153));
+    }
+
+    @Test
+    void should_return_number_when_report_given_number_contains_5_and_3_and_is_divisible_by_3_and_5() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("Buzz", fuzzBuzz.report(135));
+    }
+
+    @Test
+    void should_return_number_when_report_given_number_contains_5_and_3_and_is_divisible_by_3_and_5_and_7() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("BuzzWhizz", fuzzBuzz.report(315));
+    }
+
+    @Test
+    void should_return_Fizz_when_report_given_number_contains_7_and_is_divisible_by_3_and_5() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("Fizz", fuzzBuzz.report(75));
+    }
+
+    @Test
+    void should_return_number_when_report_given_number_contains_7_and_is_divisible_by_5() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("275", fuzzBuzz.report(275));
+    }
+
+    @Test
+    void should_return_Whizz_when_report_given_number_contains_7_and_is_divisible_by_7() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("275", fuzzBuzz.report(275));
+    }
+
+    @Test
+    void should_return_FizzWhizz_when_report_given_number_contains_7_and_is_divisible_by_3_and_5_and_7() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("FizzWhizz", fuzzBuzz.report(1575));
+    }
+
+    @Test
+    void should_return_Fizz_when_report_given_number_contains_7_and_3() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("Fizz", fuzzBuzz.report(735));
     }
 }

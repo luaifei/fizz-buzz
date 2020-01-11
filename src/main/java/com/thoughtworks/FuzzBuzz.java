@@ -6,14 +6,18 @@ import java.util.List;
 public class FuzzBuzz {
     public String report(int num) {
         List<ReportRule> reportRuleList = Arrays.asList(
-                new AllMappingRulesEffective(),
-                new Contain3RuleEffective());
+                new CommonRule(),
+                new Contain3Rule(),
+                new Contain5Rule(),
+                new Contain7Rule());
 
-        return reportRuleList.stream()
-                .filter(reportRule -> reportRule.isEffective(String.valueOf(num)))
-                .findFirst()
-                .map(reportRule -> reportRule.report(num))
-                .orElse(String.valueOf(num));
+        String result = reportRuleList.stream()
+                        .filter(reportRule -> reportRule.isEffective(String.valueOf(num)))
+                        .findFirst()
+                        .map(reportRule -> reportRule.report(num))
+                        .get();
+
+        return result.isEmpty() ? String.valueOf(num) : result;
     }
 
 }
@@ -38,7 +42,7 @@ interface ReportRule {
     String report(int num);
 }
 
-class AllMappingRulesEffective implements ReportRule {
+class CommonRule implements ReportRule {
 
     @Override
     public boolean isEffective(String numStr) {
@@ -51,7 +55,7 @@ class AllMappingRulesEffective implements ReportRule {
     }
 }
 
-class Contain3RuleEffective implements ReportRule {
+class Contain3Rule implements ReportRule {
 
     @Override
     public boolean isEffective(String numStr) {
@@ -64,5 +68,31 @@ class Contain3RuleEffective implements ReportRule {
     @Override
     public String report(int num) {
         return "Fizz";
+    }
+}
+
+class Contain5Rule implements ReportRule {
+
+    @Override
+    public boolean isEffective(String numStr) {
+        return numStr.contains("5") && !numStr.contains("7");
+    }
+
+    @Override
+    public String report(int num) {
+        return MappingUtils.divide5Rule(num) + MappingUtils.divide7Rule(num);
+    }
+}
+
+class Contain7Rule implements ReportRule {
+
+    @Override
+    public boolean isEffective(String numStr) {
+        return numStr.contains("7");
+    }
+
+    @Override
+    public String report(int num) {
+        return MappingUtils.divide3Rule(num) + MappingUtils.divide7Rule(num);
     }
 }
