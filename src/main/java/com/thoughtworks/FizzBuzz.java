@@ -2,18 +2,28 @@ package com.thoughtworks;
 
 public class FizzBuzz {
     public String report(int inputNumber) {
-        if (inputNumber % 3 == 0) {
-            if (inputNumber % 5 == 0) {
-                return "FizzBuzz";
-            }
+        if (isDivisible(inputNumber, 3, 5)) {
+            return "FizzBuzz";
+        }
+        if (isDivisible(inputNumber, 3)) {
             return "Fizz";
         }
-        if (inputNumber % 5 == 0) {
+        if (isDivisible(inputNumber, 5)) {
             return "Buzz";
         }
-        if (inputNumber % 7 == 0) {
+        if (isDivisible(inputNumber, 7)) {
             return "Whizz";
         }
         return null;
+    }
+
+    private boolean isDivisible(int number, int ... divisors) {
+        for (int divisor : divisors) {
+            if (number % divisor != 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
