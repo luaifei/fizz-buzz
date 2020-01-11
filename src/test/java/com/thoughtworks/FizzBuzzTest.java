@@ -102,7 +102,7 @@ public class FizzBuzzTest {
     @Test
     void should_return_FizzWhizz_when_fizzBuzz_given_number_contains_7_and_is_divisible_by_3_and_5_and_7() {
         FizzBuzz fizzBuzz = new FizzBuzz();
-        assertEquals("FizzWhizz", fizzBuzz.report(735));
+        assertEquals("FizzWhizz", fizzBuzz.report(1470));
     }
 
     @Test
@@ -110,5 +110,17 @@ public class FizzBuzzTest {
         FizzBuzz fizzBuzz = new FizzBuzz();
         assertEquals("1", fizzBuzz.report(1));
         assertEquals("2", fizzBuzz.report(2));
+    }
+
+    @Test
+    void should_return_number_when_fizzBuzz_given_number_contains_7_and_is_not_divisible_by_3_or_7() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        assertEquals("47", fizzBuzz.report(47));
+    }
+
+    @Test
+    void should_return_Fizz_when_fizzBuzz_given_number_contains_3_and_7() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        assertEquals("Fizz", fizzBuzz.report(37));
     }
 }

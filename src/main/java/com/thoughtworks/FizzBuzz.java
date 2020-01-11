@@ -10,6 +10,9 @@ public class FizzBuzz {
     public String report(int number) {
         String numStr = String.valueOf(number);
         if (numStr.contains("7")) {
+            if (numStr.contains("3")) {
+                return "Fizz";
+            }
             return handleOther(number, handle7(number, handle3(number, "")));
         }
         if (numStr.contains("5")) {
