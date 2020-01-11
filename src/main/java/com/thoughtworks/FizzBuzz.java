@@ -12,7 +12,7 @@ public class FizzBuzz {
         if (numStr.contains("3")) {
             return "Fizz";
         }
-        return handle7(number, handle5(number, handle3(number, "")));
+        return handleOther(number, handle7(number, handle5(number, handle3(number, ""))));
     }
 
     private String handle3(int number, String preStr) {
@@ -36,6 +36,13 @@ public class FizzBuzz {
             return preStr + "Whizz";
         }
 
+        return preStr;
+    }
+
+    private String handleOther(int number, String preStr) {
+        if (preStr.isEmpty()) {
+            return String.valueOf(number);
+        }
         return preStr;
     }
 }

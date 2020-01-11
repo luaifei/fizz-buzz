@@ -105,4 +105,10 @@ public class FizzBuzzTest {
         assertEquals("FizzWhizz", fizzBuzz.report(735));
     }
 
+    @Test
+    void should_return_number_when_fizzBuzz_given_number_is_divisible_by_3_or_5_or_7_and_number_not_contains_3() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        assertEquals("1", fizzBuzz.report(1));
+        assertEquals("2", fizzBuzz.report(2));
+    }
 }
