@@ -51,4 +51,11 @@ public class FuzzBuzzTest {
         FuzzBuzz fuzzBuzz = new FuzzBuzz();
         assertEquals("Fizz", fuzzBuzz.report(3));
     }
+
+    @Test
+    void should_return_Buzz_when_report_given_number_is_divisible_by_5() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("Buzz", fuzzBuzz.report(5));
+    }
+
 }
