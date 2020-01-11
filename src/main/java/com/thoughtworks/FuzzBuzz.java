@@ -29,24 +29,22 @@ public class FuzzBuzz {
 
 }
 
-class MappingUtils {
-    public static String divide3Rule(int num) {
-        return num % 3 == 0 ? "Fizz" : "";
-    }
-
-    public static String divide5Rule(int num) {
-        return num % 5 == 0 ? "Buzz" : "";
-    }
-
-    public static String divide7Rule(int num) {
-        return num % 7 == 0 ? "Whizz" : "";
-    }
-}
-
 interface ReportRule {
     boolean isEffective(String numStr);
 
     String report(int num);
+
+    default String divide3Rule(int num) {
+        return num % 3 == 0 ? "Fizz" : "";
+    }
+
+    default String divide5Rule(int num) {
+        return num % 5 == 0 ? "Buzz" : "";
+    }
+
+    default String divide7Rule(int num) {
+        return num % 7 == 0 ? "Whizz" : "";
+    }
 }
 
 class CommonRule implements ReportRule {
@@ -58,7 +56,7 @@ class CommonRule implements ReportRule {
 
     @Override
     public String report(int num) {
-        return MappingUtils.divide3Rule(num) + MappingUtils.divide5Rule(num) + MappingUtils.divide7Rule(num);
+        return divide3Rule(num) + divide5Rule(num) + divide7Rule(num);
     }
 }
 
@@ -86,7 +84,7 @@ class Contain5Rule implements ReportRule {
 
     @Override
     public String report(int num) {
-        return MappingUtils.divide5Rule(num) + MappingUtils.divide7Rule(num);
+        return divide5Rule(num) + divide7Rule(num);
     }
 }
 
@@ -99,6 +97,6 @@ class Contain7Rule implements ReportRule {
 
     @Override
     public String report(int num) {
-        return MappingUtils.divide3Rule(num) + MappingUtils.divide7Rule(num);
+        return divide3Rule(num) + divide7Rule(num);
     }
 }
