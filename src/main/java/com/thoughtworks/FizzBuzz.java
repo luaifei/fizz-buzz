@@ -8,6 +8,9 @@ public class FizzBuzz {
         if (isDivisible(inputNumber, 3, 7)) {
             return "FizzWhizz";
         }
+        if (isDivisible(inputNumber, 5, 7)) {
+            return "BuzzWhizz";
+        }
         if (isDivisible(inputNumber, 3)) {
             return "Fizz";
         }
