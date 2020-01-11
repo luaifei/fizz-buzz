@@ -11,6 +11,6 @@ public class FuzzBuzz {
         if (num % 7 == 0) {
             return "Whizz";
         }
-        return null;
+        return String.valueOf(num);
     }
 }

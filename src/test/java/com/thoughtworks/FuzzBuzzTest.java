@@ -64,4 +64,9 @@ public class FuzzBuzzTest {
         assertEquals("Whizz", fuzzBuzz.report(7));
     }
 
+    @Test
+    void should_return_number_when_report_given_number_is_not_divisible_by_3_or_5_or_7() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("1", fuzzBuzz.report(1));
+    }
 }
