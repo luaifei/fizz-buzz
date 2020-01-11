@@ -30,7 +30,7 @@ public class FizzBuzzTest {
 
     @Test
     void should_return_FizzBuzz_when_fizzBuzz_given_number_is_divisible_by_3_and_5() {
-        int inputNumber = 15;
+        int inputNumber = 60;
         FizzBuzz fizzBuzz = new FizzBuzz();
         assertEquals("FizzBuzz", fizzBuzz.report(inputNumber));
     }
@@ -51,7 +51,7 @@ public class FizzBuzzTest {
 
     @Test
     void should_return_FizzBuzzWhizz_when_fizzBuzz_given_number_is_divisible_by_3_and_5_and_7() {
-        int inputNumber = 105;
+        int inputNumber = 210;
         FizzBuzz fizzBuzz = new FizzBuzz();
         assertEquals("FizzBuzzWhizz", fizzBuzz.report(inputNumber));
     }
@@ -62,4 +62,29 @@ public class FizzBuzzTest {
         FizzBuzz fizzBuzz = new FizzBuzz();
         assertEquals("Fizz", fizzBuzz.report(inputNumber));
     }
+
+    @Test
+    void should_return_Fizz_when_fizzBuzz_given_number_contains_3_and_is_divisible_by_5() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        assertEquals("Fizz", fizzBuzz.report(30));
+    }
+
+    @Test
+    void should_return_Fizz_when_fizzBuzz_given_number_contains_3_and_is_divisible_by_7() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        assertEquals("Fizz", fizzBuzz.report(63));
+    }
+
+    @Test
+    void should_return_Buzz_when_fizzBuzz_given_number_contains_5_and_is_divisible_by_5_and_3() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        assertEquals("Buzz", fizzBuzz.report(15));
+    }
+
+    @Test
+    void should_return_BuzzWhizz_when_fizzBuzz_given_number_contains_5_and_is_divisible_by_5_and_7() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        assertEquals("BuzzWhizz", fizzBuzz.report(35));
+    }
+
 }

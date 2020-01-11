@@ -1,45 +1,38 @@
 package com.thoughtworks;
 
 public class FizzBuzz {
-    public String report(int inputNumber) {
-        if (isContains(inputNumber, "3")) {
+    public String report(int number) {
+        String numStr = String.valueOf(number);
+        if (numStr.contains("5")) {
+            return handle7(number, handle5(number, ""));
+        }
+        if (numStr.contains("3")) {
             return "Fizz";
         }
-        if (isDivisible(inputNumber, 3, 5, 7)) {
-            return "FizzBuzzWhizz";
-        }
-        if (isDivisible(inputNumber, 3, 5)) {
-            return "FizzBuzz";
-        }
-        if (isDivisible(inputNumber, 3, 7)) {
-            return "FizzWhizz";
-        }
-        if (isDivisible(inputNumber, 5, 7)) {
-            return "BuzzWhizz";
-        }
-        if (isDivisible(inputNumber, 3)) {
-            return "Fizz";
-        }
-        if (isDivisible(inputNumber, 5)) {
-            return "Buzz";
-        }
-        if (isDivisible(inputNumber, 7)) {
-            return "Whizz";
-        }
-        return null;
+        return handle7(number, handle5(number, handle3(number, "")));
     }
 
-    private boolean isDivisible(int number, int ... divisors) {
-        for (int divisor : divisors) {
-            if (number % divisor != 0) {
-                return false;
-            }
+    private String handle3(int number, String preStr) {
+        if (number % 3 == 0) {
+            return preStr + "Fizz";
         }
 
-        return true;
+        return preStr;
     }
 
-    private boolean isContains(int number, String specialChar) {
-        return String.valueOf(number).contains(specialChar);
+    private String handle5(int number, String preStr) {
+        if (number % 5 == 0) {
+            return preStr + "Buzz";
+        }
+
+        return preStr;
+    }
+
+    private String handle7(int number, String preStr) {
+        if (number % 7 == 0) {
+            return preStr + "Whizz";
+        }
+
+        return preStr;
     }
 }
