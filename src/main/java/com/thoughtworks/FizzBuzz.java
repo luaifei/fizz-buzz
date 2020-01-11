@@ -1,13 +1,19 @@
 package com.thoughtworks;
 
+import java.util.stream.IntStream;
+
 public class FizzBuzz {
+    public static void main (String ... args) {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        IntStream.range(1, 121).forEach(num -> System.out.println(fizzBuzz.report(num)));
+    }
     public String report(int number) {
         String numStr = String.valueOf(number);
         if (numStr.contains("7")) {
-            return handle7(number, handle3(number, ""));
+            return handleOther(number, handle7(number, handle3(number, "")));
         }
         if (numStr.contains("5")) {
-            return handle7(number, handle5(number, ""));
+            return handleOther(number, handle7(number, handle5(number, "")));
         }
         if (numStr.contains("3")) {
             return "Fizz";
