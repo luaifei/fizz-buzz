@@ -2,6 +2,9 @@ package com.thoughtworks;
 
 public class FizzBuzz {
     public String report(int inputNumber) {
+        if (isContains(inputNumber, "3")) {
+            return "Fizz";
+        }
         if (isDivisible(inputNumber, 3, 5, 7)) {
             return "FizzBuzzWhizz";
         }
@@ -34,5 +37,9 @@ public class FizzBuzz {
         }
 
         return true;
+    }
+
+    private boolean isContains(int number, String specialChar) {
+        return String.valueOf(number).contains(specialChar);
     }
 }
