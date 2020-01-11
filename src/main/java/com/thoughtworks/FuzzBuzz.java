@@ -2,8 +2,15 @@ package com.thoughtworks;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class FuzzBuzz {
+    public static void main (String ... args) {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        IntStream.range(1, 121)
+                .forEach(num -> System.out.println(fuzzBuzz.report(num)));
+    }
+
     public String report(int num) {
         List<ReportRule> reportRuleList = Arrays.asList(
                 new CommonRule(),
@@ -61,8 +68,7 @@ class Contain3Rule implements ReportRule {
     public boolean isEffective(String numStr) {
         return numStr.contains("3") &&
                 (!numStr.contains("5") ||
-                        (numStr.contains("5") && numStr.contains("7"))
-                );
+                        (numStr.contains("5") && numStr.contains("7")));
     }
 
     @Override
