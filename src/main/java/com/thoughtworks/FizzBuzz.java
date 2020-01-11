@@ -16,33 +16,18 @@ public class FizzBuzz {
     }
 
     private String handle3(int number, String preStr) {
-        if (number % 3 == 0) {
-            return preStr + "Fizz";
-        }
-
-        return preStr;
+        return number % 3 == 0 ? preStr + "Fizz" : preStr;
     }
 
     private String handle5(int number, String preStr) {
-        if (number % 5 == 0) {
-            return preStr + "Buzz";
-        }
-
-        return preStr;
+        return number % 5 == 0 ? preStr + "Buzz" : preStr;
     }
 
     private String handle7(int number, String preStr) {
-        if (number % 7 == 0) {
-            return preStr + "Whizz";
-        }
-
-        return preStr;
+        return number % 7 == 0 ? preStr + "Whizz" : preStr;
     }
 
     private String handleOther(int number, String preStr) {
-        if (preStr.isEmpty()) {
-            return String.valueOf(number);
-        }
-        return preStr;
+        return preStr.isEmpty() ? String.valueOf(number) : preStr;
     }
 }
