@@ -2,6 +2,9 @@ package com.thoughtworks;
 
 public class FizzBuzz {
     public String report(int inputNumber) {
+        if (isDivisible(inputNumber, 3, 5, 7)) {
+            return "FizzBuzzWhizz";
+        }
         if (isDivisible(inputNumber, 3, 5)) {
             return "FizzBuzz";
         }
