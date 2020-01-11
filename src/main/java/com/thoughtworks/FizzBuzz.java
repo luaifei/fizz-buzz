@@ -3,6 +3,9 @@ package com.thoughtworks;
 public class FizzBuzz {
     public String report(int number) {
         String numStr = String.valueOf(number);
+        if (numStr.contains("7")) {
+            return handle7(number, handle3(number, ""));
+        }
         if (numStr.contains("5")) {
             return handle7(number, handle5(number, ""));
         }
