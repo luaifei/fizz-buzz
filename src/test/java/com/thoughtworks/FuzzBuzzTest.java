@@ -103,4 +103,19 @@ public class FuzzBuzzTest {
         assertEquals("Fizz", fuzzBuzz.report(num));
     }
 
+    /**
+     *  * 6. 如果数字中包含了5，那么忽略规则4和规则5，并且忽略被3整除的判定，比如要报35的同学不报Fizz，报BuzzWhizz。
+     *  *      - 当所报的数字包含5时，并且不包含7，并且不包含3，并且仅是3的倍数，则报数字 (51)
+     *  *      - 当所报的数字包含5时，并且不包含7，并且不包含3，并且是3，5的倍数，则报Buzz (15)
+     *  *      - 当所报的数字包含5时，并且不包含7，并且不包含3，并且是3，5，7的倍数，则报BuzzWhizz (105)
+     *  *      - 当所报的数字包含5时，并且不包含7，并且包含3时，并且不是3，5，7的倍数，则报数字 (53)
+     *  *      - 当所报的数字包含5时，并且不包含7，并且包含3时，并且仅是3的倍数，则报数字 (153)
+     *  *      - 当所报的数字包含5时，并且不包含7，并且包含3时，并且是3，5的倍数，则报Buzz (135)
+     *  *      - 当所报的数字包含5时，并且不包含7，并且包含3时，并且是3，5，7的倍数，则报BuzzWhizz (315)
+     */
+    @Test
+    void should_return_number_when_report_given_number_contains_5_and_is_divisible_by_3() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("51", fuzzBuzz.report(51));
+    }
 }
