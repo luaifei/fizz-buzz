@@ -58,4 +58,10 @@ public class FuzzBuzzTest {
         assertEquals("Buzz", fuzzBuzz.report(5));
     }
 
+    @Test
+    void should_return_whizz_when_report_given_number_is_divisible_by_7() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("Whizz", fuzzBuzz.report(7));
+    }
+
 }

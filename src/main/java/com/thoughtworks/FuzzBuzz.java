@@ -8,6 +8,9 @@ public class FuzzBuzz {
         if (num % 5 == 0) {
             return "Buzz";
         }
+        if (num % 7 == 0) {
+            return "Whizz";
+        }
         return null;
     }
 }
