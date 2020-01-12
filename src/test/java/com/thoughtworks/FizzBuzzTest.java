@@ -28,4 +28,10 @@ public class FizzBuzzTest {
         FizzBuzz fizzBuzz = new FizzBuzz();
         assertEquals("1", fizzBuzz.report(1));
     }
+
+    @Test
+    void should_return_FizzBuzz_given_input_is_divisible_by_3_and_5() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        assertEquals("FizzBuzz", fizzBuzz.report(15));
+    }
 }

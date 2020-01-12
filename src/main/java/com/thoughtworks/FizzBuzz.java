@@ -2,15 +2,16 @@ package com.thoughtworks;
 
 public class FizzBuzz {
     public String report(int num) {
+        String result = "";
         if (num % 3 == 0) {
-            return "Fizz";
+            result += "Fizz";
         }
         if (num % 5 == 0) {
-            return "Buzz";
+            result += "Buzz";
         }
         if (num % 7 == 0) {
-            return "Whizz";
+            result += "Whizz";
         }
-        return String.valueOf(num);
+        return result.isEmpty() ? String.valueOf(num) : result;
     }
 }
