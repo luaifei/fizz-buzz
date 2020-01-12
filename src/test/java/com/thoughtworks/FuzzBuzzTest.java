@@ -48,4 +48,16 @@ public class FuzzBuzzTest {
         assertEquals("FizzBuzzWhizz", fuzzBuzz.report(105));
     }
 
+    @Test
+    void should_return_Fizz_given_number_contains_3() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("Fizz", fuzzBuzz.report(13));
+    }
+
+    @Test
+    void should_return_Fizz_given_number_contains_3_and_is_divisible_by_5_and_7() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("Fizz", fuzzBuzz.report(35));
+    }
+
 }
