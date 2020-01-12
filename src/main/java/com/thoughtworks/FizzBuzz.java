@@ -1,16 +1,16 @@
 package com.thoughtworks;
 
-public class FuzzBuzz {
+public class FizzBuzz {
     public String report(int num) {
         String result = "";
         if (num % 3 == 0 && (!isContains(num, "5") || isContains(num, "7"))) {
             result += "Fizz";
         }
-        if (num % 5 == 0 && !isContains(num, "7")) {
+        if (num % 5  == 0 && !isContains(num, "7")) {
             result += "Buzz";
         }
         if (num % 7 == 0) {
-            result += "Whizz";
+            result +=  "Whizz";
         }
         if (isContains(num, "3") && (!isContains(num, "5") || isContains(num, "7"))) {
             result = "Fizz";
