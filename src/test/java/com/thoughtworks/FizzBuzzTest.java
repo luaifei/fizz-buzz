@@ -34,4 +34,16 @@ public class FizzBuzzTest {
         FizzBuzz fizzBuzz = new FizzBuzz();
         assertEquals("FizzBuzz", fizzBuzz.report(15));
     }
+
+    @Test
+    void should_return_Fizz_given_input_contains_3() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        assertEquals("Fizz", fizzBuzz.report(13));
+    }
+
+    @Test
+    void should_return_Fizz_given_input_contains_3_and_is_divisible_by_5() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        assertEquals("Fizz", fizzBuzz.report(35));
+    }
 }

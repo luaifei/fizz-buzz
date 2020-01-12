@@ -12,6 +12,9 @@ public class FizzBuzz {
         if (num % 7 == 0) {
             result += "Whizz";
         }
+        if (String.valueOf(num).contains("3")) {
+            result = "Fizz";
+        }
         return result.isEmpty() ? String.valueOf(num) : result;
     }
 }
