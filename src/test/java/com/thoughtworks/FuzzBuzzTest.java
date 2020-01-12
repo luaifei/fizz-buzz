@@ -3,6 +3,7 @@ package com.thoughtworks;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 /**
  * 1. 输入是3的倍数，返回Fizz；输入是5的倍数，返回Buzz；输入是7的倍数，返回Whizz；如果既不是3或5或7的倍数，则返回数字
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * 7. 如果数字包含7，则忽略5的倍数关系
  */
 public class FuzzBuzzTest {
+
     @Test
     void should_return_Fizz_when_num_is_divisible_by_3() {
         FuzzBuzz fuzzBuzz = new FuzzBuzz();
@@ -38,13 +40,15 @@ public class FuzzBuzzTest {
 
     @Test
     void should_return_FizzBuzz_given_number_is_divisible_by_3_and_5() {
-        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        FuzzBuzz fuzzBuzz = spy(FuzzBuzz.class);
+        when(fuzzBuzz.isContains(15, "5")).thenReturn(false);
         assertEquals("FizzBuzz", fuzzBuzz.report(15));
     }
 
     @Test
     void should_return_FizzBuzzWhizz_given_number_is_divisible_by_3_and_5_and_7() {
-        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        FuzzBuzz fuzzBuzz = spy(FuzzBuzz.class);
+        when(fuzzBuzz.isContains(105, "5")).thenReturn(false);
         assertEquals("FizzBuzzWhizz", fuzzBuzz.report(105));
     }
 
@@ -56,8 +60,14 @@ public class FuzzBuzzTest {
 
     @Test
     void should_return_Fizz_given_number_contains_3_and_is_divisible_by_5_and_7() {
-        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        FuzzBuzz fuzzBuzz = spy(FuzzBuzz.class);
+        when(fuzzBuzz.isContains(35, "5")).thenReturn(false);
         assertEquals("Fizz", fuzzBuzz.report(35));
     }
 
+    @Test
+    void should_return_Buzz_given_number_contains_5_and_is_divisible_by_3() {
+        FuzzBuzz fuzzBuzz = new FuzzBuzz();
+        assertEquals("BuzzWhizz", fuzzBuzz.report(35));
+    }
 }
